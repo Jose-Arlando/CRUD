@@ -13,7 +13,7 @@ public class TelaSegundario {
     void CriarTelaSegundaria(){
         //CRIAR TABELA E ARRAY
         ArrayList <Carro> listaCarros = new ArrayList<>();
-        String[] colunas = {"TIPO", "MARCA", "MODELO", "ANO", "VALOR", "COR"};
+        String[] colunas = {"TIPO", "MARCA", "MODELO", "ANO", "VALOR", "CÂMBIO"};
         DefaultTableModel model = new DefaultTableModel(colunas, 0);
         JTable tabelaVeiculo = new JTable(model);
 
@@ -78,7 +78,7 @@ public class TelaSegundario {
                                 ||c.getMarca().toLowerCase().contains(busca)
                                 ||c.getModelo().toLowerCase().contains(busca)
                                 ||c.getAno().contains(busca)
-                                ||c.getCor().toLowerCase().contains(busca)){
+                                ||c.getCambio().toLowerCase().contains(busca)){
                                 
                                 model.addRow(new Object[]{
                                     c.getTipo(),
@@ -86,7 +86,7 @@ public class TelaSegundario {
                                     c.getModelo(),
                                     c.getAno(),
                                     c.getValor(),
-                                    c.getCor()
+                                    c.getCambio()
                                 });
                             }
                         }
@@ -108,8 +108,16 @@ public class TelaSegundario {
             public void actionPerformed(ActionEvent e){
                 int linha = tabelaVeiculo.getSelectedRow();
                 Carro carroselecionado = listaCarros.get(linha);
-                telaEditar = new TelaEditar(carroselecionado);
+                telaEditar = new TelaEditar(carroselecionado, model, linha);
                 telaEditar.criartelaeditar();
+            }
+        });
+        btnDeletar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                int linha = tabelaVeiculo.getSelectedRow();
+                listaCarros.remove(linha);
+                model.removeRow(linha);
             }
         });
     }

@@ -4,11 +4,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.Image;
+
 
 public class Telaprincipal {
     public static void main(String [] args){
         
-        //CRIAR
+        //CRIAR        
+        ImageIcon img = new ImageIcon("C:\\Users\\wanderson\\Documents\\Meus Projetos\\CRUD\\Desafio_interface\\carro2.png");
+        Image imgRedimensionada = img.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        JLabel lbImagem = new JLabel(new ImageIcon(imgRedimensionada));
+
         JFrame telaPrincipal = new JFrame("CADASTRO VEÍCULOS");
         JLabel lbIniciar = new JLabel("BEM VINDO!");
         JLabel lbDescricao = new JLabel("O proposito deste sistema é realizar o cadastro de veículos!");
@@ -23,12 +30,14 @@ public class Telaprincipal {
         lbIniciar.setBounds(150, 150, 200, 40);
         lbDescricao.setBounds(75, 200, 340, 40);
         btnIniciar.setBounds(207, 350, 85, 30);
+        lbImagem.setBounds(200, 50, 100, 100);
+        
         
         //ADICIONAR
         telaPrincipal.add(lbIniciar);
         telaPrincipal.add(btnIniciar);
         telaPrincipal.add(lbDescricao);
-
+        telaPrincipal.add(lbImagem);
         //EVENTO
         btnIniciar.addActionListener(e -> {
             // telaPrincipal.dispose();   essa função fecha a TelaPrincipal e abre apenas a telaCadastro
