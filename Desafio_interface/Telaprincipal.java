@@ -40,7 +40,7 @@ public class Telaprincipal {
         telaPrincipal.add(lbImagem);
         //EVENTO
         btnIniciar.addActionListener(e -> {
-            // telaPrincipal.dispose();   essa função fecha a TelaPrincipal e abre apenas a telaCadastro
+            telaPrincipal.dispose();   
             TelaSegundario telaSegundaria = new TelaSegundario();
             telaSegundaria.CriarTelaSegundaria();
             

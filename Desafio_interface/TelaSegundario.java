@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class TelaSegundario {
     TelaEditar telaEditar;
+    TelaFechar telaFechar;
 
     void CriarTelaSegundaria(){
         //CRIAR TABELA E ARRAY
@@ -22,6 +23,7 @@ public class TelaSegundario {
         JButton btnBuscar = new JButton("Buscar");
         JButton btnEditar = new JButton("Editar");
         JButton btnDeletar = new JButton("Deletar");
+        JButton btnFechar = new JButton("Fechar");
         //EDITAR
         telaSegundaria.setLayout(null);
         telaSegundaria.setSize(700, 500);
@@ -32,6 +34,7 @@ public class TelaSegundario {
         btnBuscar.setBounds(455, 50, 100, 40);
         btnEditar.setBounds(580, 0, 100, 40);
         btnDeletar.setBounds(580, 50, 100, 40);
+        btnFechar.setBounds(520, 400, 100, 40);
         JScrollPane scroll = new JScrollPane(tabelaVeiculo);
         scroll.setBounds(0,0, 450, 500);
 
@@ -40,6 +43,7 @@ public class TelaSegundario {
         telaSegundaria.add(btnBuscar);
         telaSegundaria.add(btnEditar);
         telaSegundaria.add(btnDeletar);
+        telaSegundaria.add(btnFechar);
         telaSegundaria.add(scroll);
 
         btnCadastrar.addActionListener(new ActionListener(){
@@ -118,6 +122,15 @@ public class TelaSegundario {
                 int linha = tabelaVeiculo.getSelectedRow();
                 listaCarros.remove(linha);
                 model.removeRow(linha);
+            }
+        });
+        btnFechar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                telaSegundaria.dispose();
+                TelaFechar telaFechar = new TelaFechar(model);
+                telaFechar.CriarTelaFechar();
+
             }
         });
     }
