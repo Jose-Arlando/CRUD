@@ -14,7 +14,7 @@ public class TelaSegundario {
     void CriarTelaSegundaria(){
         //CRIAR TABELA E ARRAY
         ArrayList <Carro> listaCarros = new ArrayList<>();
-        String[] colunas = {"TIPO", "MARCA", "MODELO", "ANO", "VALOR", "CÂMBIO"};
+        String[] colunas = {"TIPO", "MARCA", "MODELO", "VALOR", "ANO", "CÂMBIO"};
         DefaultTableModel model = new DefaultTableModel(colunas, 0);
         JTable tabelaVeiculo = new JTable(model);
 
